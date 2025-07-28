@@ -45,8 +45,10 @@ refactor: true
   {% endfor %}
 {% endif %}
 
-<!-- 👋 Contenu personnalisé depuis index.html -->
-{{ content }}
+<!-- 👋 Contenu en Tailwind isolé -->
+<div class="tailwind-wrapper">
+  {{ content }}
+</div>
 
 <style>
   .article-card {
