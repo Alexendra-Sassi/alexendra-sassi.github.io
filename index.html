@@ -2,3 +2,298 @@
 layout: home
 # Index page
 ---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Carnet de Nutrition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+        }
+        h1, h2, h3 {
+            font-family: 'Libre Baskerville', serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .custom-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title:after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            border-radius: 3px;
+        }
+        .icon-container {
+            transition: transform 0.3s ease;
+        }
+        .icon-container:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .fancy-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .fancy-underline:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        .fancy-underline:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête sobre -->
+    <header class="bg-white py-12 px-6 text-center animate__animated animate__fadeIn">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                <span class="gradient-text">Mon Carnet de Nutrition</span>
+            </h1>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                Théorie, pratique et passion - Tout sur mon aventure en nutrition
+            </p>
+            <div class="mt-8 flex justify-center">
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-green-500 rounded-full"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section thématique -->
+    <main class="max-w-6xl mx-auto px-6 py-12">
+        <section class="mb-16 animate__animated animate__fadeInUp">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 section-title">Au Menu</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <!-- Colonne Étudiante -->
+                <div class="space-y-6">
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-200">
+                        <h3 class="text-xl font-bold mb-4 text-blue-800 flex items-center">
+                            <span class="bg-blue-100 p-2 rounded-full mr-3 icon-container">📚</span>
+                            <span class="fancy-underline">Mes études en nutrition</span>
+                        </h3>
+                        
+                        <!-- Thème 1 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 border-t-4 border-blue-100">
+                            <h3 class="text-lg font-bold mb-3 text-blue-800 flex items-center">
+                                <span class="mr-2">📖</span>
+                                Cours & Apprentissages
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Résumés de mes cours clés
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Fiches techniques 
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Bibliographie commentée
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Outils pratiques que j'utilise
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Thème 2 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 mt-6 border-t-4 border-green-100">
+                            <h3 class="text-lg font-bold mb-3 text-green-800 flex items-center">
+                                <span class="mr-2">💭</span>
+                                Réflexions de terrain
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-green-500 mr-2">-</span>
+                                    Retours d'expérience en stage
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-green-500 mr-2">-</span>
+                                    Analyse de cas pratiques
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-green-500 mr-2">-</span>
+                                    Erreurs et leçons apprises
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Thème 5 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 mt-6 border-t-4 border-teal-100">
+                            <h3 class="text-lg font-bold mb-3 text-teal-800 flex items-center">
+                                <span class="mr-2">🍎</span>
+                                Vie Étudiante
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-teal-500 mr-2">-</span>
+                                    Conciliation études/alimentation
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-teal-500 mr-2">-</span>
+                                    Astuces budget serré
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-teal-500 mr-2">-</span>
+                                    Meal prep adapté aux examens
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Colonne Professionnelle -->
+                <div class="space-y-6">
+                    <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-200">
+                        <h3 class="text-xl font-bold mb-4 text-purple-800 flex items-center">
+                            <span class="bg-purple-100 p-2 rounded-full mr-3 icon-container">💼</span>
+                            <span class="fancy-underline">Ma pratique professionnelle</span>
+                        </h3>
+                        
+                        <!-- Thème 3 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 border-t-4 border-purple-100">
+                            <h3 class="text-lg font-bold mb-3 text-purple-800 flex items-center">
+                                <span class="mr-2">🍳</span>
+                                Conseils & Recettes
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-purple-500 mr-2">-</span>
+                                    Idées repas équilibrés
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-purple-500 mr-2">-</span>
+                                    Recettes adaptées à des pathologies
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-purple-500 mr-2">-</span>
+                                    Astuces pour courses et meal prep
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-purple-500 mr-2">-</span>
+                                    Adaptations selon les budgets
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Thème 4 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 mt-6 border-t-4 border-orange-100">
+                            <h3 class="text-lg font-bold mb-3 text-orange-800 flex items-center">
+                                <span class="mr-2">👩‍⚕️</span>
+                                Accompagnement Pro
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-orange-500 mr-2">-</span>
+                                    Méthodologies de consultation
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-orange-500 mr-2">-</span>
+                                    Outils d'éducation nutritionnelle
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-orange-500 mr-2">-</span>
+                                    Gestion de cabinet
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Thème 6 -->
+                        <div class="bg-white p-6 rounded-lg custom-shadow ml-8 mt-6 border-t-4 border-blue-100">
+                            <h3 class="text-lg font-bold mb-3 text-blue-800 flex items-center">
+                                <span class="mr-2">🌍</span>
+                                Engagement Sociétal
+                            </h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Initiatives locales en nutrition
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Projets de sensibilisation
+                                </li>
+                                <li class="flex items-start pl-4 hover:pl-6 transition-all duration-200">
+                                    <span class="text-blue-500 mr-2">-</span>
+                                    Partenariats avec des ONG
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section image + texte simple -->
+        <section class="flex flex-col md:flex-row items-center gap-8 mt-16 bg-white p-8 rounded-lg custom-shadow animate__animated animate__fadeIn">
+            <div class="md:w-1/2 relative">
+                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
+                     alt="Alimentation saine"
+                     class="rounded-lg w-full h-auto max-h-96 object-cover shadow-md transform hover:scale-105 transition duration-500">
+                <div class="absolute -bottom-4 -right-4 bg-white p-2 rounded-full shadow-lg">
+                    <span class="text-2xl">🍏</span>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <h2 class="text-2xl font-bold mb-6 text-gray-800">Mon parcours en nutrition</h2>
+                <div class="space-y-4 text-gray-700">
+                    <p class="text-lg leading-relaxed">
+                        Ce carnet retrace mon évolution depuis mes études jusqu'à ma pratique professionnelle. 
+                    </p>
+                    <p class="leading-relaxed">
+                        Vous y trouverez à la fois des ressources académiques rigoureuses et des conseils concrets pour une alimentation saine au quotidien.
+                    </p>
+                    <p class="leading-relaxed">
+                        Un mélange équilibré de théorie et de pratique, toujours au service de votre santé et de mon apprentissage continu.
+                    </p>
+                </div>
+                <div class="mt-6 flex items-center">
+                    <div class="w-8 h-1 bg-blue-500 mr-2"></div>
+                    <div class="w-8 h-1 bg-green-500 mr-2"></div>
+                    <div class="w-8 h-1 bg-purple-500"></div>
+                </div>
+            </div>
+        </section>
+
+        
+    </main>
+</body>
+</html>
