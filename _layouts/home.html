@@ -360,11 +360,21 @@ refactor: true
   }
   
   /* Responsive amélioré */
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    .article-image {
+      height: 200px;
+    }
+    
     .article-content {
       padding: 20px;
     }
     
+    .article-title {
+      font-size: 1.15rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
     .article-image {
       height: 180px;
     }
@@ -389,7 +399,7 @@ refactor: true
     }
   }
   
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     .article-image {
       height: 160px;
     }
@@ -555,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div id="post-list-anchor"></div>
 
 <!-- Liste des articles (toujours affichée) -->
-<div id="post-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-3">
+<div id="post-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 px-3">
   {% for post in posts %}
     <div class="col">
       <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
