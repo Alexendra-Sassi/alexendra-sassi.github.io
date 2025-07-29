@@ -47,9 +47,15 @@ refactor: true
 
 <!-- Affiche le contenu uniquement sur la première page -->
 <!-- Affiche le contenu sur toutes les pages mais le cache à partir de la page 2 -->
-<div class="{% if paginator.page != 1 %}hidden-content{% endif %}">
-  {{ content }}
-</div>
+{% if paginator.page == 1 %}
+  <div class="main-content">
+    {{ content }}
+  </div>
+{% else %}
+  <div class="hidden-content" style="display: none !important;">
+    {{ content }}
+  </div>
+{% endif %}
 
 <style>
   /* Todos vos styles existants conservés intégralement */
@@ -115,7 +121,10 @@ refactor: true
   }
   /* CSS pour Cacher le contenu de index sur les pages 2+ défaut */
   .hidden-content {
-  display: none;
+    display: none !important;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
   }
   
   /* Nouveau système de couleurs de catégories plus robuste */
