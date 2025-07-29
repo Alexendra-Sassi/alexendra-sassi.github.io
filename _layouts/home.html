@@ -2,42 +2,54 @@
 layout: default
 refactor: true
 ---
+
 {% include lang.html %}
+
 {% assign all_pinned = site.posts | where: 'pin', 'true' %}
 {% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
+
 {% assign posts = '' | split: '' %}
+
 <!-- Get pinned posts on current page -->
 {% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page %}
 {% assign visible_end = visible_start | plus: paginator.per_page %}
+
 {% if all_pinned.size > visible_start %}
   {% if all_pinned.size > visible_end %}
     {% assign pinned_size = paginator.per_page %}
   {% else %}
     {% assign pinned_size = all_pinned.size | minus: visible_start %}
   {% endif %}
+
   {% for i in (visible_start..all_pinned.size) limit: pinned_size %}
     {% assign posts = posts | push: all_pinned[i] %}
   {% endfor %}
 {% else %}
   {% assign pinned_size = 0 %}
 {% endif %}
+
 <!-- Get normal posts on current page -->
 {% assign normal_size = paginator.posts | size | minus: pinned_size %}
+
 {% if normal_size > 0 %}
   {% if pinned_size > 0 %}
     {% assign normal_start = 0 %}
   {% else %}
     {% assign normal_start = visible_start | minus: all_pinned.size %}
   {% endif %}
+
   {% assign normal_end = normal_start | plus: normal_size | minus: 1 %}
+
   {% for i in (normal_start..normal_end) %}
     {% assign posts = posts | push: all_normal[i] %}
   {% endfor %}
 {% endif %}
+
 <!-- Affiche le contenu uniquement sur la première page -->
 {% if paginator.page == 1 %}
   {{ content }}
 {% endif %}
+
 <style>
   /* Todos vos styles existants conservés intégralement */
   .article-card {
@@ -77,6 +89,7 @@ refactor: true
   .article-card:hover .article-image img {
     transform: scale(1.05);
   }
+
   /* NOUVEAU: Style pour le temps de lecture */
   .reading-time {
     position: absolute;
@@ -94,6 +107,7 @@ refactor: true
     z-index: 2;
     backdrop-filter: blur(4px);
   }
+
   .reading-time i {
     font-size: 0.8rem;
     opacity: 0.9;
@@ -261,27 +275,35 @@ refactor: true
     gap: 6px;
   }
   
-  /* NOUVEAU: Style pour le lien "Lire plus" */
-  .read-more-text {
-    color: #4a6fa5;
+  .read-more-btn {
+    background: linear-gradient(135deg, #4a6fa5 0%, #166d67 100%);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+    border: none;
   }
   
-  .read-more-text:hover {
-    color: #166d67;
+  .read-more-btn:hover {
+    background: linear-gradient(135deg, #166d67 0%, #4a6fa5 100%);
+    transform: translateX(4px);
+    box-shadow: 0 6px 20px rgba(22, 109, 103, 0.4);
+    color: white;
   }
   
-  .read-more-text i {
+  .read-more-btn i {
     transition: transform 0.3s ease;
   }
   
-  .read-more-text:hover i {
+  .read-more-btn:hover i {
     transform: translateX(2px);
   }
   
@@ -322,15 +344,6 @@ refactor: true
       --image-placeholder-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
       --image-placeholder-color: #718096;
     }
-    
-    /* Ajustement des couleurs pour le mode sombre */
-    .read-more-text {
-      color: #8bb4f7;
-    }
-    
-    .read-more-text:hover {
-      color: #5a9fd4;
-    }
   }
   
   /* Support pour le thème sombre de Chirpy */
@@ -344,15 +357,6 @@ refactor: true
     --link-color: #8bb4f7;
     --image-placeholder-bg: linear-gradient(135deg, #343a40 0%, #495057 100%);
     --image-placeholder-color: #6c757d;
-    
-    /* Ajustement des couleurs pour le thème sombre */
-    .read-more-text {
-      color: #8bb4f7;
-    }
-    
-    .read-more-text:hover {
-      color: #5a9fd4;
-    }
   }
   
   /* Responsive amélioré */
@@ -374,10 +378,11 @@ refactor: true
       padding: 6px 12px;
     }
     
-    .read-more-text {
-      font-size: 0.85rem;
+    .read-more-btn {
+      padding: 8px 14px;
+      font-size: 0.8rem;
     }
-    
+
     .reading-time {
       padding: 10px 12px 12px;
       font-size: 0.8rem;
@@ -404,66 +409,66 @@ refactor: true
       padding: 8px;
       font-size: 0.8rem;
     }
-    
+
     .reading-time {
       padding: 8px 12px 10px;
       font-size: 0.75rem;
     }
-    
-    .read-more-text {
-      font-size: 0.8rem;
-    }
   }
-  
+
   /* Nouveaux styles pour la pagination améliorée */
   .pagination-container {
     margin: 3rem 0;
     text-align: center;
   }
   
-  /* NOUVEAU: Style pour le lien "Voir plus d'articles" */
-  .load-more-text {
-    color: #4a6fa5;
+  .load-more-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #4a6fa5 0%, #166d67 100%);
+    color: white;
+    border-radius: 30px;
     font-weight: 600;
     text-decoration: none;
-    transition: color 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
     margin-top: 2rem;
-    font-size: 1rem;
   }
-  
-  .load-more-text:hover {
-    color: #166d67;
+
+  .load-more-btn:hover {
+    background: linear-gradient(135deg, #166d67 0%, #4a6fa5 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   }
-  
-  .load-more-text i {
+
+  .load-more-btn i {
     margin-left: 8px;
     transition: transform 0.3s ease;
   }
-  
-  .load-more-text:hover i {
+
+  .load-more-btn:hover i {
     transform: translateX(4px);
   }
-  
+
   /* Cache la pagination standard sur la première page */
   {% if paginator.page == 1 %}
     .standard-pagination {
       display: none !important;
     }
   {% endif %}
-  
+
   /* Ancre pour le scroll */
   #post-list-anchor {
     scroll-margin-top: 20px;
   }
-  
+
   /* Styles pour la pagination standard */
   .standard-pagination {
     margin-top: 2rem;
   }
-  
+
   .previous-page, .next-page, .page-number {
     display: inline-block;
     padding: 8px 16px;
@@ -473,12 +478,12 @@ refactor: true
     text-decoration: none;
     transition: all 0.3s ease;
   }
-  
+
   .previous-page:hover, .next-page:hover, .page-number:hover {
     background-color: var(--card-bg);
     color: var(--link-color);
   }
-  
+
   .active-page {
     display: inline-block;
     padding: 8px 16px;
@@ -488,28 +493,8 @@ refactor: true
     color: white;
     font-weight: 600;
   }
-  
-  /* Ajustements pour le mode sombre */
-  @media (prefers-color-scheme: dark) {
-    .load-more-text {
-      color: #8bb4f7;
-    }
-    
-    .load-more-text:hover {
-      color: #5a9fd4;
-    }
-  }
-  
-  [data-bs-theme="dark"] {
-    .load-more-text {
-      color: #8bb4f7;
-    }
-    
-    .load-more-text:hover {
-      color: #5a9fd4;
-    }
-  }
 </style>
+
 <script>
 // Fonction pour calculer le temps de lecture basé sur le contenu
 function calculateReadingTime(content) {
@@ -525,6 +510,7 @@ function calculateReadingTime(content) {
   
   return Math.max(1, readingTime); // Minimum 1 minute
 }
+
 // Amélioration du chargement des images
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('.article-image img');
@@ -544,14 +530,15 @@ document.addEventListener('DOMContentLoaded', function() {
   articles.forEach((article, index) => {
     article.addEventListener('click', function(e) {
       // Ne pas déclencher si on clique sur le bouton "Lire plus"
-      if (!e.target.closest('.read-more-text')) {
-        const readMoreText = this.querySelector('.read-more-text');
-        if (readMoreText) {
-          window.location.href = readMoreText.href;
+      if (!e.target.closest('.read-more-btn')) {
+        const readMoreBtn = this.querySelector('.read-more-btn');
+        if (readMoreBtn) {
+          window.location.href = readMoreBtn.href;
         }
       }
     });
   });
+
   // Gestion du scroll vers l'ancre après chargement de la page
   if (window.location.hash === '#post-list-anchor') {
     setTimeout(function() {
@@ -563,8 +550,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
 <!-- Ancre pour le scroll -->
 <div id="post-list-anchor"></div>
+
 <!-- Liste des articles (toujours affichée) -->
 <div id="post-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-3">
   {% for post in posts %}
@@ -596,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function() {
               <i class="fas fa-thumbtack"></i>
             </div>
           {% endif %}
+
           <!-- NOUVEAU: Temps de lecture calculé -->
           <div class="reading-time">
             <i class="far fa-clock"></i>
@@ -609,6 +599,7 @@ document.addEventListener('DOMContentLoaded', function() {
             {% endif %}
           </div>
         </div>
+
         <div class="article-content">
           <h2 class="article-title" itemprop="headline">
             <a href="{{ post.url | relative_url }}" style="text-decoration: none; color: inherit;">
@@ -619,6 +610,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <p class="article-excerpt" itemprop="description">
             {% include post-description.html %}
           </p>
+
           <div class="article-footer">
             <div class="article-date">
               <i class="far fa-calendar-alt"></i>
@@ -626,8 +618,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 {% include datetime.html date=post.date lang=lang %}
               </time>
             </div>
-            <!-- NOUVEAU: Remplacement du bouton par un texte coloré -->
-            <a href="{{ post.url | relative_url }}" class="read-more-text" aria-label="Lire l'article {{ post.title }}">
+
+            <a href="{{ post.url | relative_url }}" class="read-more-btn" aria-label="Lire l'article {{ post.title }}">
               Lire plus
               <i class="fas fa-arrow-right"></i>
             </a>
@@ -637,12 +629,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   {% endfor %}
 </div>
+
 {% if paginator.total_pages > 1 %}
   <div class="pagination-container">
     <!-- Bouton "Voir plus d'articles" seulement sur la première page -->
     {% if paginator.page == 1 %}
-      <!-- NOUVEAU: Remplacement du bouton par un texte coloré -->
-      <a href="{{ paginator.next_page_path | relative_url }}#post-list-anchor" class="load-more-text">
+      <a href="{{ paginator.next_page_path | relative_url }}#post-list-anchor" class="load-more-btn">
         Voir plus d'articles <i class="fas fa-arrow-right"></i>
       </a>
     {% endif %}
@@ -656,6 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">&larr; Précédent</a>
         {% endif %}
       {% endif %}
+
       {% for page in (1..paginator.total_pages) %}
         {% if page == paginator.page %}
           <span class="active-page">{{ page }}</span>
@@ -665,6 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}" class="page-number">{{ page }}</a>
         {% endif %}
       {% endfor %}
+
       {% if paginator.next_page %}
         <a href="{{ paginator.next_page_path | relative_url }}" class="next-page">Suivant &rarr;</a>
       {% endif %}
