@@ -5,6 +5,8 @@ refactor: true
 
 {% include lang.html %}
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Libre+Baskerville:ital@0;1&display=swap" rel="stylesheet">
+
 {% assign all_pinned = site.posts | where: 'pin', 'true' %}
 {% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
 
@@ -46,7 +48,6 @@ refactor: true
 {% endif %}
 
 <!-- Affiche le contenu uniquement sur la première page -->
-<!-- Affiche le contenu sur toutes les pages mais le cache à partir de la page 2 -->
 {% if paginator.page == 1 %}
   <div class="main-content">
     {{ content }}
@@ -58,7 +59,49 @@ refactor: true
 {% endif %}
 
 <style>
-  /* Todos vos styles existants conservés intégralement */
+  /* Variables CSS */
+  :root {
+    --card-bg: #ffffff;
+    --card-border: rgba(0, 0, 0, 0.05);
+    --card-border-hover: rgba(0, 0, 0, 0.1);
+    --text-color: #2d3748;
+    --text-muted: #718096;
+    --border-color: #e2e8f0;
+    --link-color: #2F7A7A;
+    --image-placeholder-bg: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    --image-placeholder-color: #a0aec0;
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif: 'Libre Baskerville', serif;
+  }
+
+  /* Mode sombre */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --card-bg: #2d3748;
+      --card-border: rgba(255, 255, 255, 0.1);
+      --card-border-hover: rgba(255, 255, 255, 0.2);
+      --text-color: #f7fafc;
+      --text-muted: #cbd5e0;
+      --border-color: rgba(255, 255, 255, 0.1);
+      --link-color: #4aaaaa;
+      --image-placeholder-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+      --image-placeholder-color: #718096;
+    }
+  }
+
+  [data-bs-theme="dark"] {
+    --card-bg: #1e2328;
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-border-hover: rgba(255, 255, 255, 0.2);
+    --text-color: #f8f9fa;
+    --text-muted: #adb5bd;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --link-color: #4aaaaa;
+    --image-placeholder-bg: linear-gradient(135deg, #343a40 0%, #495057 100%);
+    --image-placeholder-color: #6c757d;
+  }
+
+  /* Structure principale */
   .article-card {
     background: var(--card-bg);
     border-radius: 16px;
@@ -97,7 +140,6 @@ refactor: true
     transform: scale(1.05);
   }
 
-  /* NOUVEAU: Style pour le temps de lecture */
   .reading-time {
     position: absolute;
     bottom: 0;
@@ -113,13 +155,14 @@ refactor: true
     gap: 6px;
     z-index: 2;
     backdrop-filter: blur(4px);
+    font-family: var(--font-sans);
   }
 
   .reading-time i {
     font-size: 0.8rem;
     opacity: 0.9;
   }
-  /* CSS pour Cacher le contenu de index sur les pages 2+ défaut */
+
   .hidden-content {
     display: none !important;
     height: 0;
@@ -127,73 +170,72 @@ refactor: true
     visibility: hidden;
   }
   
-  /* Nouveau système de couleurs de catégories plus robuste */
+  /* Catégories */
   [class^="category-nutrition"],
   [class*=" category-nutrition"] { 
-    background: #4CAF50 !important; /* Vert */
+    background: #4CAF50 !important;
   }
   
   [class^="category-superfood"],
   [class*=" category-superfood"] { 
-    background: #2196F3 !important; /* Bleu */
+    background: #2196F3 !important;
   }
   
   [class^="category-meal"],
   [class*=" category-meal"] { 
-    background: #9C27B0 !important; /* Violet */
+    background: #9C27B0 !important;
   }
   
   [class^="category-recipe"],
   [class*=" category-recipe"] { 
-    background: #FF9800 !important; /* Orange */
+    background: #FF9800 !important;
   }
   
   [class^="category-health"],
   [class^="category-sante"],
   [class*=" category-health"],
   [class*=" category-sante"] { 
-    background: #E91E63 !important; /* Rose */
+    background: #E91E63 !important;
   }
   
   [class^="category-fitnes"],
   [class^="category-sport"],
   [class*=" category-fitnes"],
   [class*=" category-sport"] { 
-    background: #F44336 !important; /* Rouge */
+    background: #F44336 !important;
   }
   
   [class^="category-supplement"],
   [class^="category-complement"],
   [class*=" category-supplement"],
   [class*=" category-complement"] { 
-    background: #00BCD4 !important; /* Cyan */
+    background: #00BCD4 !important;
   }
   
   [class^="category-lifestyle"],
   [class*=" category-lifestyle"] { 
-    background: #607D8B !important; /* Gris-bleu */
+    background: #607D8B !important;
   }
   
   [class^="category-weight"],
   [class^="category-perte"],
   [class*=" category-weight"],
   [class*=" category-perte"] { 
-    background: #FF5722 !important; /* Orange vif */
+    background: #FF5722 !important;
   }
   
   [class^="category-detox"],
   [class*=" category-detox"] { 
-    background: #795548 !important; /* Marron */
+    background: #795548 !important;
   }
   
   [class^="category-vegan"],
   [class^="category-vegetarian"],
   [class*=" category-vegan"],
   [class*=" category-vegetarian"] { 
-    background: #8BC34A !important; /* Vert clair */
+    background: #8BC34A !important;
   }
   
-  /* Style du badge de catégorie - POLICE AUGMENTÉE */
   .category-badge {
     position: absolute;
     top: 16px;
@@ -209,6 +251,7 @@ refactor: true
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(0);
     transition: all 0.3s ease;
+    font-family: var(--font-sans);
   }
   
   .article-card:hover .category-badge {
@@ -236,6 +279,7 @@ refactor: true
     100% { transform: scale(1); }
   }
   
+  /* Contenu des articles */
   .article-content {
     padding: 24px;
     flex-grow: 1;
@@ -244,6 +288,7 @@ refactor: true
   }
   
   .article-title {
+    font-family: var(--font-serif);
     font-size: 1.25rem;
     font-weight: 700;
     line-height: 1.4;
@@ -261,6 +306,7 @@ refactor: true
   }
   
   .article-excerpt {
+    font-family: var(--font-sans);
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
@@ -287,30 +333,31 @@ refactor: true
     display: flex;
     align-items: center;
     gap: 6px;
+    font-family: var(--font-sans);
   }
   
   .read-more-btn {
-    background: linear-gradient(135deg, #4a6fa5 0%, #166d67 100%);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 25px;
-    font-size: 0.85rem;
+    background: transparent;
+    color: var(--link-color);
+    padding: 8px 0;
+    border-radius: 0;
+    font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
-    border: none;
+    gap: 6px;
+    border-bottom: 2px solid transparent;
+    font-family: var(--font-sans);
   }
   
   .read-more-btn:hover {
-    background: linear-gradient(135deg, #166d67 0%, #4a6fa5 100%);
-    transform: translateX(4px);
-    box-shadow: 0 6px 20px rgba(22, 109, 103, 0.4);
-    color: white;
+    background: transparent;
+    color: var(--primary-dark);
+    border-bottom-color: var(--link-color);
+    transform: none;
+    box-shadow: none;
   }
   
   .read-more-btn i {
@@ -331,49 +378,83 @@ refactor: true
     color: var(--image-placeholder-color);
     font-size: 2.5rem;
   }
-  
-  /* Variables CSS pour les thèmes */
-  :root {
-    --card-bg: #ffffff;
-    --card-border: rgba(0, 0, 0, 0.05);
-    --card-border-hover: rgba(0, 0, 0, 0.1);
-    --text-color: #2d3748;
-    --text-muted: #718096;
-    --border-color: #e2e8f0;
-    --link-color: #4a6fa5;
-    --image-placeholder-bg: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-    --image-placeholder-color: #a0aec0;
+
+  /* Pagination */
+  .pagination-container {
+    margin: 3rem 0;
+    text-align: center;
   }
   
-  /* Mode sombre */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --card-bg: #2d3748;
-      --card-border: rgba(255, 255, 255, 0.1);
-      --card-border-hover: rgba(255, 255, 255, 0.2);
-      --text-color: #f7fafc;
-      --text-muted: #cbd5e0;
-      --border-color: rgba(255, 255, 255, 0.1);
-      --link-color: #8bb4f7;
-      --image-placeholder-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-      --image-placeholder-color: #718096;
+  .load-more-btn {
+    background: transparent;
+    color: var(--link-color);
+    padding: 10px 0;
+    font-weight: 600;
+    border-bottom: 2px solid var(--link-color);
+    border-radius: 0;
+    font-family: var(--font-sans);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    display: inline-block;
+  }
+
+  .load-more-btn:hover {
+    background: transparent;
+    color: var(--primary-dark);
+    border-bottom-color: var(--primary-dark);
+  }
+
+  .load-more-btn i {
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  .load-more-btn:hover i {
+    transform: translateX(4px);
+  }
+
+  {% if paginator.page == 1 %}
+    .standard-pagination {
+      display: none !important;
     }
+  {% endif %}
+
+  #post-list-anchor {
+    scroll-margin-top: 20px;
   }
-  
-  /* Support pour le thème sombre de Chirpy */
-  [data-bs-theme="dark"] {
-    --card-bg: #1e2328;
-    --card-border: rgba(255, 255, 255, 0.1);
-    --card-border-hover: rgba(255, 255, 255, 0.2);
-    --text-color: #f8f9fa;
-    --text-muted: #adb5bd;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --link-color: #8bb4f7;
-    --image-placeholder-bg: linear-gradient(135deg, #343a40 0%, #495057 100%);
-    --image-placeholder-color: #6c757d;
+
+  .standard-pagination {
+    margin-top: 2rem;
   }
-  
-  /* Responsive amélioré */
+
+  .previous-page, .next-page, .page-number {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-sans);
+  }
+
+  .previous-page:hover, .next-page:hover, .page-number:hover {
+    background-color: var(--card-bg);
+    color: var(--link-color);
+  }
+
+  .active-page {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 4px;
+    border-radius: 4px;
+    background-color: var(--link-color);
+    color: white;
+    font-weight: 600;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
     .article-content {
       padding: 20px;
@@ -393,13 +474,17 @@ refactor: true
     }
     
     .read-more-btn {
-      padding: 8px 14px;
-      font-size: 0.8rem;
+      padding: 6px 0;
+      font-size: 0.85rem;
     }
 
     .reading-time {
       padding: 10px 12px 12px;
       font-size: 0.8rem;
+    }
+
+    .load-more-btn {
+      padding: 8px 0;
     }
   }
   
@@ -428,84 +513,10 @@ refactor: true
       padding: 8px 12px 10px;
       font-size: 0.75rem;
     }
-  }
 
-  /* Nouveaux styles pour la pagination améliorée */
-  .pagination-container {
-    margin: 3rem 0;
-    text-align: center;
-  }
-  
-  .load-more-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background: linear-gradient(135deg, #4a6fa5 0%, #166d67 100%);
-    color: white;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    border: none;
-    cursor: pointer;
-    margin-top: 2rem;
-  }
-
-  .load-more-btn:hover {
-    background: linear-gradient(135deg, #166d67 0%, #4a6fa5 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .load-more-btn i {
-    margin-left: 8px;
-    transition: transform 0.3s ease;
-  }
-
-  .load-more-btn:hover i {
-    transform: translateX(4px);
-  }
-
-  /* Cache la pagination standard sur la première page */
-  {% if paginator.page == 1 %}
-    .standard-pagination {
-      display: none !important;
+    .read-more-btn {
+      font-size: 0.8rem;
     }
-  {% endif %}
-
-  /* Ancre pour le scroll */
-  #post-list-anchor {
-    scroll-margin-top: 20px;
-  }
-
-  /* Styles pour la pagination standard */
-  .standard-pagination {
-    margin-top: 2rem;
-  }
-
-  .previous-page, .next-page, .page-number {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 4px;
-    border-radius: 4px;
-    color: var(--text-color);
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .previous-page:hover, .next-page:hover, .page-number:hover {
-    background-color: var(--card-bg);
-    color: var(--link-color);
-  }
-
-  .active-page {
-    display: inline-block;
-    padding: 8px 16px;
-    margin: 0 4px;
-    border-radius: 4px;
-    background: linear-gradient(135deg, #4a6fa5 0%, #166d67 100%);
-    color: white;
-    font-weight: 600;
   }
 </style>
 
@@ -514,15 +525,11 @@ refactor: true
 function calculateReadingTime(content) {
   if (!content) return 1;
   
-  // Nettoyer le contenu HTML et compter les mots
   const cleanContent = content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const wordCount = cleanContent.split(' ').length;
-  
-  // Vitesse de lecture moyenne : 200 mots par minute
   const wordsPerMinute = 200;
   const readingTime = Math.ceil(wordCount / wordsPerMinute);
-  
-  return Math.max(1, readingTime); // Minimum 1 minute
+  return Math.max(1, readingTime);
 }
 
 // Amélioration du chargement des images
@@ -539,11 +546,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Analytics pour les clics sur les articles (optionnel)
+  // Analytics pour les clics sur les articles
   const articles = document.querySelectorAll('.article-card');
   articles.forEach((article, index) => {
     article.addEventListener('click', function(e) {
-      // Ne pas déclencher si on clique sur le bouton "Lire plus"
       if (!e.target.closest('.read-more-btn')) {
         const readMoreBtn = this.querySelector('.read-more-btn');
         if (readMoreBtn) {
@@ -553,7 +559,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Gestion du scroll vers l'ancre après chargement de la page
+  // Gestion du scroll vers l'ancre
   if (window.location.hash === '#post-list-anchor') {
     setTimeout(function() {
       const element = document.getElementById('post-list-anchor');
@@ -568,12 +574,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Ancre pour le scroll -->
 <div id="post-list-anchor"></div>
 
-<!-- Liste des articles (toujours affichée) -->
+<!-- Liste des articles -->
 <div id="post-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-3">
   {% for post in posts %}
     <div class="col">
       <article class="article-card" itemscope itemtype="https://schema.org/BlogPosting">
-        <!-- Zone image toujours présente -->
         <div class="article-image">
           {% if post.image %}
             {% assign src = post.image.path | default: post.image %}
@@ -581,7 +586,6 @@ document.addEventListener('DOMContentLoaded', function() {
             {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
             <img src="{{ src }}" alt="{{ alt }}" itemprop="image" loading="lazy">
           {% else %}
-            <!-- Placeholder pour les articles sans image -->
             <div class="image-placeholder">
               <i class="fas fa-image"></i>
             </div>
@@ -600,17 +604,12 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
           {% endif %}
 
-          <!-- NOUVEAU: Temps de lecture calculé -->
           <div class="reading-time">
             <i class="far fa-clock"></i>
             {% assign content = post.content | strip_html %}
             {% assign word_count = content | number_of_words %}
             {% assign reading_time = word_count | divided_by: 200 | plus: 1 %}
-            {% if reading_time == 1 %}
-              {{ reading_time }} min de lecture
-            {% else %}
-              {{ reading_time }} min de lecture
-            {% endif %}
+            {{ reading_time }} min de lecture
           </div>
         </div>
 
@@ -646,14 +645,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% if paginator.total_pages > 1 %}
   <div class="pagination-container">
-    <!-- Bouton "Voir plus d'articles" seulement sur la première page -->
     {% if paginator.page == 1 %}
       <a href="{{ paginator.next_page_path | relative_url }}#post-list-anchor" class="load-more-btn">
         Voir plus d'articles <i class="fas fa-arrow-right"></i>
       </a>
     {% endif %}
     
-    <!-- Pagination standard (toujours présente mais cachée sur la première page) -->
     <div class="standard-pagination">
       {% if paginator.previous_page %}
         {% if paginator.previous_page == 1 %}
