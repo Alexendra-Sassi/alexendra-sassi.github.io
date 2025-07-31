@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<style>
+  /* Cache seulement le panel de droite */
+  #panel-wrapper {
+    display: none !important;
+  }
+  
+  /* Ajustement précis de l'alignement */
+  .about-content {
+    padding-left: calc(var(--sidebar-width) + 2rem) !important;
+    width: calc(100% - var(--sidebar-width)) !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  @media (max-width: 992px) {
+    .about-content {
+      padding-left: 1rem !important;
+      width: 100% !important;
+    }
+  }
+</style>
+
+<article class="about-content">
+  {% assign tab_key = page.title | downcase %}
+  {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+  <h1 class="dynamic-title">
+    {{ title }}
+  </h1>
+  <div class="content">
+    {{ content }}
+  </div>
+</article>

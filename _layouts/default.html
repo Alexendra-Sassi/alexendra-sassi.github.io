@@ -38,11 +38,12 @@ layout: compress
 
         <div class="row flex-grow-1">
           <!-- Condition pour ajuster la largeur du main selon si on affiche la barre droite ou non -->
-          {% if page.layout == 'home' %}
-            <main aria-label="Main Content" class="col-12 px-md-4">
-          {% else %}
-            <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
+          {% if page.layout == 'home' or page.layout == 'about' %}
+               <main aria-label="Main Content" class="col-12 px-md-4">
+            {% else %}
+                <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
           {% endif %}
+
             {% if layout.refactor or layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
             {% else %}
@@ -51,7 +52,7 @@ layout: compress
           </main>
 
           <!-- Panel - affiché seulement si ce n'est pas le layout home -->
-          {% unless page.layout == 'home' %}
+          {% unless page.layout == 'home' or page.layout == 'about' %}
           <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
             <div class="access">
               {% include_cached update-list.html lang=lang %}
