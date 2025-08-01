@@ -64,34 +64,15 @@ order: 5
   </section>
 
   <!-- Newsletter -->
-<section class="as-newsletter">
-  <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
-  <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
-
-  <form action="https://github.us7.list-manage.com/subscribe/post?u=b22ee328484216188a98eb86a&amp;id=24200e986c&amp;f_id=00ca18e0f0" 
-        method="post" 
-        id="mc-embedded-subscribe-form" 
-        name="mc-embedded-subscribe-form" 
-        class="as-newsletter-form" 
-        target="_blank" 
-        novalidate>
-
-    <label for="mce-EMAIL" class="sr-only">Votre email</label>
-    <input type="email" 
-           name="EMAIL" 
-           class="as-newsletter-input" 
-           id="mce-EMAIL" 
-           placeholder="Votre email" 
-           required>
-
-    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-      <input type="text" name="b_b22ee328484216188a98eb86a_24200e986c" tabindex="-1" value="">
-    </div>
-
-    <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
-  </form>
-</section>
-
+  <section class="as-newsletter">
+    <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
+    <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
+    <form class="as-newsletter-form">
+      <label for="newsletter-email" class="sr-only">Votre email</label>
+      <input id="newsletter-email" name="email" type="email" placeholder="Votre email" required class="as-newsletter-input">
+      <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
+    </form>
+  </section>
 
   <!-- Contact -->
   <section class="as-contact-section">
@@ -134,42 +115,43 @@ order: 5
         </div>
       </div>
 
-      <div class="as-contact-form">
-        <h3 class="as-form-title">Envoyez-moi un message</h3>
-        <form class="as-form">
-          <div class="as-form-row">
-            <div class="as-form-group">
-              <label for="prenom" class="sr-only">Prénom</label>
-              <input type="text" id="prenom" placeholder="Prénom *" required class="as-form-input">
-            </div>
-            <div class="as-form-group">
-              <label for="nom" class="sr-only">Nom</label>
-              <input type="text" id="nom" placeholder="Nom *" required class="as-form-input">
-            </div>
-          </div>
-          <div class="as-form-group">
-            <label for="email" class="sr-only">Email</label>
-            <input type="email" id="email" placeholder="Votre email *" required class="as-form-input">
-          </div>
-          <div class="as-form-group">
-            <label for="service" class="sr-only">Service</label>
-            <select id="service" name="service" class="as-form-select" required>
-              <option disabled selected>Sélectionnez un service</option>
-              <option>Conseils Nutritionnels</option>
-              <option>Suggestions de Menus</option>
-              <option>Conseils Nutrition Familiale</option>
-              <option>Autre demande</option>
-            </select>
-          </div>
-          <div class="as-form-group">
-            <label for="message" class="sr-only">Message</label>
-            <textarea id="message" placeholder="Décrivez votre demande..." class="as-form-textarea"></textarea>
-          </div>
-          <button type="submit" class="as-submit-button">📨 Envoyer le message</button>
-        </form>
+<div class="as-contact-form">
+  <h3 class="as-form-title">Envoyez-moi un message</h3>
+  <form class="as-form" id="contact-form">
+    <div class="as-form-row">
+      <div class="as-form-group">
+        <label for="prenom" class="sr-only">Prénom</label>
+        <input type="text" id="prenom" name="Prénom" placeholder="Prénom *" required class="as-form-input">
       </div>
-
+      <div class="as-form-group">
+        <label for="nom" class="sr-only">Nom</label>
+        <input type="text" id="nom" name="Nom" placeholder="Nom *" required class="as-form-input">
+      </div>
     </div>
+    <div class="as-form-group">
+      <label for="email" class="sr-only">Email</label>
+      <input type="email" id="email" name="Email" placeholder="Votre email *" required class="as-form-input">
+    </div>
+    <div class="as-form-group">
+      <label for="service" class="sr-only">Service</label>
+      <select id="service" name="Service" class="as-form-select" required>
+        <option disabled selected>Sélectionnez un service</option>
+        <option>Conseils Nutritionnels</option>
+        <option>Suggestions de Menus</option>
+        <option>Conseils Nutrition Familiale</option>
+        <option>Autre demande</option>
+      </select>
+    </div>
+    <div class="as-form-group">
+      <label for="message" class="sr-only">Message</label>
+      <textarea id="message" name="Message" placeholder="Décrivez votre demande..." class="as-form-textarea"></textarea>
+    </div>
+    <button type="submit" class="as-submit-button">📨 Envoyer le message</button>
+  </form>
+
+  <!-- Message de confirmation -->
+  <div id="success-message" style="display: none; margin-top: 10px; color: green;">✅ Message envoyé avec succès !</div>
+</div>
   </section>
 </section>
 
@@ -704,4 +686,41 @@ order: 5
   height: 1px;
   overflow: hidden;
 }
+
 </style>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const successMessage = document.getElementById('success-message');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // empêcher la redirection
+
+    // Créer un objet contenant les données du formulaire
+    const formData = new FormData(form);
+
+    // Envoyer les données à FormSubmit via fetch
+    fetch("https://formsubmit.co/ajax/nanogame434@gmail.com", {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json'
+      },
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        successMessage.style.display = 'block';
+        form.reset();
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 2500);
+      } else {
+        alert("❌ Une erreur s’est produite.");
+      }
+    })
+    .catch(error => {
+      alert("❌ Une erreur s’est produite.");
+      console.error(error);
+    });
+  });
+</script>
