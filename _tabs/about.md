@@ -64,15 +64,34 @@ order: 5
   </section>
 
   <!-- Newsletter -->
-  <section class="as-newsletter">
-    <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
-    <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
-    <form class="as-newsletter-form">
-      <label for="newsletter-email" class="sr-only">Votre email</label>
-      <input id="newsletter-email" name="email" type="email" placeholder="Votre email" required class="as-newsletter-input">
-      <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
-    </form>
-  </section>
+<section class="as-newsletter">
+  <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
+  <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
+
+  <form action="https://github.us7.list-manage.com/subscribe/post?u=b22ee328484216188a98eb86a&amp;id=24200e986c&amp;f_id=00ca18e0f0" 
+        method="post" 
+        id="mc-embedded-subscribe-form" 
+        name="mc-embedded-subscribe-form" 
+        class="as-newsletter-form" 
+        target="_blank" 
+        novalidate>
+
+    <label for="mce-EMAIL" class="sr-only">Votre email</label>
+    <input type="email" 
+           name="EMAIL" 
+           class="as-newsletter-input" 
+           id="mce-EMAIL" 
+           placeholder="Votre email" 
+           required>
+
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_b22ee328484216188a98eb86a_24200e986c" tabindex="-1" value="">
+    </div>
+
+    <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
+  </form>
+</section>
+
 
   <!-- Contact -->
   <section class="as-contact-section">
