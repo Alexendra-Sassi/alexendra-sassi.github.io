@@ -1,7 +1,7 @@
 ---
 title: "Micronutriments : Les Clés d'une Santé Optimale"
 date: 2025-07-22 10:30:00 +0100
-categories: [health]
+categories: [santé]
 tags: [vitamines, minéraux, santé, prévention]
 image:
   path: /assets/img/posts/micronutriments.jpg
