@@ -64,15 +64,64 @@ order: 5
   </section>
 
   <!-- Newsletter -->
-  <section class="as-newsletter">
-    <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
-    <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
-    <form class="as-newsletter-form">
-      <label for="newsletter-email" class="sr-only">Votre email</label>
-      <input id="newsletter-email" name="email" type="email" placeholder="Votre email" required class="as-newsletter-input">
-      <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
-    </form>
-  </section>
+<section class="as-newsletter">
+  <h3 class="as-newsletter-title">Conseils exclusifs par email</h3>
+  <p class="as-newsletter-text">Recevez chaque mois des menus équilibrés et des astuces nutritionnelles.</p>
+  
+  <!-- Formulaire modifié avec intégration MailerLite -->
+  <form id="custom-ml-form" class="as-newsletter-form">
+    <label for="newsletter-email" class="sr-only">Votre email</label>
+    <input id="newsletter-email" name="email" type="email" placeholder="Votre email" required class="as-newsletter-input">
+    <button type="submit" class="as-newsletter-button">📩 S'inscrire</button>
+  </form>
+  
+  <div id="ml-success-message" style="display:none; margin-top:15px; color:green;">
+    Merci ! Vérifiez votre email pour confirmer.
+  </div>
+</section>
+
+<!-- Script MailerLite modifié -->
+<script>
+  // Fonction pour gérer l'envoi
+  async function handleMLSubmit(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value;
+    const form = document.getElementById('custom-ml-form');
+    const successMsg = document.getElementById('ml-success-message');
+    
+    // Validation simple
+    if (!email.includes('@')) {
+      alert('Veuillez entrer un email valide');
+      return;
+    }
+
+    // Afficher un indicateur de chargement
+    form.querySelector('button').textContent = 'Envoi en cours...';
+    
+    try {
+      // Utilisation de l'endpoint JSONP de MailerLite
+      const callbackName = 'ml_callback_' + Date.now();
+      const script = document.createElement('script');
+      script.src = `https://assets.mailerlite.com/jsonp/1707928/forms/161576488074740809/subscribe?callback=${callbackName}&fields[email]=${encodeURIComponent(email)}`;
+      
+      window[callbackName] = function() {
+        // Succès
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+        form.reset();
+        delete window[callbackName];
+      };
+      
+      document.body.appendChild(script);
+    } catch (error) {
+      alert("Une erreur s'est produite. Veuillez réessayer.");
+      form.querySelector('button').textContent = '📩 S\'inscrire';
+    }
+  }
+
+  // Écouteur d'événement
+  document.getElementById('custom-ml-form').addEventListener('submit', handleMLSubmit);
+</script>
 
   <!-- Contact -->
   <section class="as-contact-section">
