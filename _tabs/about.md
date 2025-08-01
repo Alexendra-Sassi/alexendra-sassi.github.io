@@ -688,36 +688,34 @@ order: 5
 
 <script>
   const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('success-message');
+const successMessage = document.getElementById('success-message');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault(); // empêcher la redirection
-
-    // Créer un objet contenant les données du formulaire
+form.addEventListener('submit', async function (e) {
+  e.preventDefault();
+  
+  try {
     const formData = new FormData(form);
-
-    // Envoyer les données à FormSubmit via fetch
-    fetch("https://formsubmit.co/ajax/katchao878@gmail.com", {
+    const response = await fetch("https://formsubmit.co/ajax/katchao878@gmail.com", {
       method: "POST",
-      headers: {
+      headers: { 
+        'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        successMessage.style.display = 'block';
-        form.reset();
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-        }, 2500);
-      } else {
-        alert("❌ Une erreur s’est produite.");
-      }
-    })
-    .catch(error => {
-      alert("❌ Une erreur s’est produite.");
-      console.error(error);
+      body: JSON.stringify(Object.fromEntries(formData))
     });
-  });
+    
+    if (response.ok) {
+      successMessage.style.display = 'block';
+      form.reset();
+      setTimeout(() => {
+        successMessage.style.display = 'none';
+      }, 2500);
+    } else {
+      alert("❌ Une erreur s'est produite. Code: " + response.status);
+    }
+  } catch (error) {
+    alert("❌ Erreur réseau : " + error.message);
+    console.error(error);
+  }
+});
 </script>
