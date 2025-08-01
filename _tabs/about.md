@@ -27,7 +27,7 @@ order: 5
     <h2 class="as-section-title">Mes Services</h2>
     <div class="as-services-grid">
 
-      <article class="as-service-card as-blue-card">
+<article class="as-service-card as-blue-card">
         <div class="as-service-icon">🥗</div>
         <h3>Conseils Nutritionnels</h3>
         <p>Accompagnement nutritionnel pour vous aider à adopter de meilleures habitudes alimentaires.</p>
@@ -38,7 +38,7 @@ order: 5
         </ul>
       </article>
 
-      <article class="as-service-card as-green-card">
+  <article class="as-service-card as-green-card">
         <div class="as-service-icon">📋</div>
         <h3>Suggestions de Menus</h3>
         <p>Création de suggestions de menus équilibrés et variés adaptés à vos besoins.</p>
@@ -49,7 +49,7 @@ order: 5
         </ul>
       </article>
 
-      <article class="as-service-card as-purple-card">
+  <article class="as-service-card as-purple-card">
         <div class="as-service-icon">👶</div>
         <h3>Conseils Nutrition Familiale</h3>
         <p>Conseils nutritionnels de base pour la famille.</p>
@@ -60,7 +60,7 @@ order: 5
         </ul>
       </article>
 
-    </div>
+  </div>
   </section>
 
   <!-- Newsletter -->
@@ -77,11 +77,10 @@ order: 5
   <!-- Contact -->
   <section class="as-contact-section">
     <div class="as-contact-grid">
-
-      <div class="as-contact-info">
+<div class="as-contact-info">
         <h3 class="as-contact-title">Informations de Contact</h3>
 
-        <div class="as-contact-item">
+  <div class="as-contact-item">
           <div class="as-contact-icon">📧</div>
           <div class="as-contact-content">
             <strong>Email</strong><br>
@@ -89,7 +88,7 @@ order: 5
           </div>
         </div>
 
-        <div class="as-contact-item">
+  <div class="as-contact-item">
           <div class="as-contact-icon">📱</div>
           <div class="as-contact-content">
             <strong>Téléphone</strong><br>
@@ -97,7 +96,7 @@ order: 5
           </div>
         </div>
 
-        <div class="as-contact-item">
+<div class="as-contact-item">
           <div class="as-contact-icon">📍</div>
           <div class="as-contact-content">
             <strong>Localisation</strong><br>
@@ -105,7 +104,7 @@ order: 5
           </div>
         </div>
 
-        <div class="as-contact-item">
+  <div class="as-contact-item">
           <div class="as-contact-icon">🕒</div>
           <div class="as-contact-content">
             <strong>Disponibilité</strong><br>
@@ -152,9 +151,7 @@ order: 5
   <!-- Message de confirmation -->
   <div id="success-message" style="display: none; margin-top: 10px; color: green;">✅ Message envoyé avec succès !</div>
 </div>
-  </section>
-</section>
-
+ 
 <style>
 :root {
   --primary: #3b82f6;
@@ -700,7 +697,7 @@ order: 5
     const formData = new FormData(form);
 
     // Envoyer les données à FormSubmit via fetch
-    fetch("https://formsubmit.co/ajax/nanogame434@gmail.com", {
+    fetch("https://formsubmit.co/ajax/katchao878@gmail.com", {
       method: "POST",
       headers: {
         'Accept': 'application/json'
