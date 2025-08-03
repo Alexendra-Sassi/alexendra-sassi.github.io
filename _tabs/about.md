@@ -733,6 +733,104 @@ order: 5
   overflow: hidden;
 }
 
+/* Modifications pour améliorer la responsivité mobile */
+@media (max-width: 576px) {
+  .alexandra-sassi-container {
+    padding: 15px;
+    margin: 10px auto;
+    border-radius: 15px;
+  }
+  
+  .as-header {
+    margin-bottom: 20px;
+  }
+  
+  .as-profile-img {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+  }
+  
+  .as-title {
+    font-size: 1.8rem;
+  }
+  
+  .as-subtitle {
+    font-size: 1rem;
+  }
+  
+  .as-section {
+    margin-bottom: 30px;
+  }
+  
+  .as-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .as-intro-text {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  
+  .as-service-card {
+    padding: 20px;
+  }
+  
+  .as-contact-section {
+    padding: 20px;
+  }
+  
+  .as-contact-item {
+    padding: 12px;
+  }
+  
+  .as-newsletter {
+    padding: 20px;
+  }
+  
+  .as-newsletter-title {
+    font-size: 1.3rem;
+  }
+  
+  .as-form-group {
+    margin-bottom: 12px;
+  }
+  
+  /* Ajustements spécifiques pour les petits écrans */
+  .as-services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .as-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .as-newsletter-form {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .as-newsletter-input,
+  .as-newsletter-button {
+    width: 100%;
+  }
+  
+  /* Correction pour les éléments qui pourraient déborder */
+  .as-feature-list li {
+    word-break: break-word;
+  }
+  
+  /* Ajustement des animations pour mobile */
+  .as-service-card:hover {
+    transform: none;
+  }
+  
+  .as-contact-item:hover {
+    transform: none;
+  }
+}
 </style>
 
 <script>
