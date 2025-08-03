@@ -2,6 +2,7 @@
 layout: home
 # Index page
 ---
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -13,23 +14,47 @@ layout: home
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+        :root {
+            --blue-50: #f0f9ff;
+            --blue-100: #dbeafe;
+            --blue-200: #bfdbfe;
+            --blue-500: #3b82f6;
+            --blue-800: #1e40af;
+            --purple-50: #faf5ff;
+            --purple-100: #f3e8ff;
+            --purple-200: #e9d5ff;
+            --purple-500: #8b5cf6;
+            --purple-800: #6b21a8;
+            --green-500: #10b981;
+            --green-800: #166534;
+            --orange-500: #f97316;
+            --orange-800: #9a3412;
+            --teal-500: #14b8a6;
+            --teal-800: #115e59;
+        }
+        
         body {
             background-color: #f8f9fa;
             background-image: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            overflow-x: hidden;
         }
+        
         .custom-shadow {
             box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        
         .custom-shadow:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
         }
+        
         .section-title {
             position: relative;
             display: inline-block;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
+        
         .section-title:after {
             content: "";
             position: absolute;
@@ -37,25 +62,30 @@ layout: home
             left: 0;
             width: 50%;
             height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #10b981);
+            background: linear-gradient(90deg, var(--blue-500), var(--green-500));
             border-radius: 3px;
         }
+        
         .icon-container {
             transition: transform 0.3s ease;
         }
+        
         .icon-container:hover {
             transform: scale(1.1) rotate(5deg);
         }
+        
         .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #10b981);
+            background: linear-gradient(90deg, var(--blue-500), var(--green-500));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        
         .fancy-underline {
             position: relative;
             display: inline-block;
         }
+        
         .fancy-underline:after {
             content: "";
             position: absolute;
@@ -68,72 +98,10 @@ layout: home
             transform-origin: right;
             transition: transform 0.3s ease;
         }
+        
         .fancy-underline:hover:after {
             transform: scaleX(1);
             transform-origin: left;
-        }
-        .border-blue-200 {
-            border-left-color: #bfdbfe !important;
-        }
-        .border-purple-200 {
-            border-left-color: #e9d5ff !important;
-        }
-        .bg-blue-50 {
-            background-color: #f0f9ff;
-        }
-        .bg-purple-50 {
-            background-color: #faf5ff;
-        }
-        .bg-blue-100 {
-            background-color: #dbeafe;
-        }
-        .bg-purple-100 {
-            background-color: #f3e8ff;
-        }
-        .text-blue-800 {
-            color: #1e40af;
-        }
-        .text-purple-800 {
-            color: #6b21a8;
-        }
-        .text-green-800 {
-            color: #166534;
-        }
-        .text-orange-800 {
-            color: #9a3412;
-        }
-        .text-teal-800 {
-            color: #115e59;
-        }
-        .border-blue-100 {
-            border-top-color: #dbeafe !important;
-        }
-        .border-green-100 {
-            border-top-color: #dcfce7 !important;
-        }
-        .border-purple-100 {
-            border-top-color: #f3e8ff !important;
-        }
-        .border-orange-100 {
-            border-top-color: #ffedd5 !important;
-        }
-        .border-teal-100 {
-            border-top-color: #ccfbf1 !important;
-        }
-        .text-blue-500 {
-            color: #3b82f6;
-        }
-        .text-green-500 {
-            color: #10b981;
-        }
-        .text-purple-500 {
-            color: #8b5cf6;
-        }
-        .text-orange-500 {
-            color: #f97316;
-        }
-        .text-teal-500 {
-            color: #14b8a6;
         }
         
         /* Effets hover pour les listes */
@@ -149,73 +117,271 @@ layout: home
             cursor: pointer;
         }
 
-        .border-blue-100 .list-unstyled li:hover {
-            background-color: rgba(59, 130, 246, 0.1);
+        /* Classes utilitaires simplifiées */
+        .border-blue-200 {
+            border-left-color: var(--blue-200) !important;
         }
-        .border-green-100 .list-unstyled li:hover {
-            background-color: rgba(16, 185, 129, 0.1);
+        
+        .border-purple-200 {
+            border-left-color: var(--purple-200) !important;
         }
-        .border-purple-100 .list-unstyled li:hover {
-            background-color: rgba(139, 92, 246, 0.1);
+        
+        .bg-blue-50 {
+            background-color: var(--blue-50);
         }
-        .border-orange-100 .list-unstyled li:hover {
-            background-color: rgba(249, 115, 22, 0.1);
+        
+        .bg-purple-50 {
+            background-color: var(--purple-50);
         }
-        .border-teal-100 .list-unstyled li:hover {
-            background-color: rgba(20, 184, 166, 0.1);
+        
+        .bg-blue-100 {
+            background-color: var(--blue-100);
+        }
+        
+        .bg-purple-100 {
+            background-color: var(--purple-100);
+        }
+        
+        .text-blue-800 {
+            color: var(--blue-800);
+        }
+        
+        .text-purple-800 {
+            color: var(--purple-800);
+        }
+        
+        .text-green-800 {
+            color: var(--green-800);
+        }
+        
+        .text-orange-800 {
+            color: var(--orange-800);
+        }
+        
+        .text-teal-800 {
+            color: var(--teal-800);
+        }
+        
+        .border-blue-100 {
+            border-top-color: var(--blue-100) !important;
+        }
+        
+        .border-green-100 {
+            border-top-color: #dcfce7 !important;
+        }
+        
+        .border-purple-100 {
+            border-top-color: var(--purple-100) !important;
+        }
+        
+        .border-orange-100 {
+            border-top-color: #ffedd5 !important;
+        }
+        
+        .border-teal-100 {
+            border-top-color: #ccfbf1 !important;
+        }
+        
+        .text-blue-500 {
+            color: var(--blue-500);
+        }
+        
+        .text-green-500 {
+            color: var(--green-500);
+        }
+        
+        .text-purple-500 {
+            color: var(--purple-500);
+        }
+        
+        .text-orange-500 {
+            color: var(--orange-500);
+        }
+        
+        .text-teal-500 {
+            color: var(--teal-500);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title:after {
+                width: 40%;
+                bottom: -5px;
+            }
+            
+            .border-start {
+                border-left-width: 3px !important;
+            }
+            
+            .border-top {
+                border-top-width: 3px !important;
+            }
+            
+            .px-4 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            .ms-4 {
+                margin-left: 1rem !important;
+            }
+            
+            .p-4 {
+                padding: 1.5rem !important;
+            }
+            
+            .p-3 {
+                padding: 1rem !important;
+            }
+            
+            .h2 {
+                font-size: 1.75rem;
+            }
+            
+            .h4 {
+                font-size: 1.25rem;
+            }
+            
+            .h5 {
+                font-size: 1.1rem;
+            }
+            
+            .text-lg {
+                font-size: 1rem;
+            }
+            
+            .w-25 {
+                width: 50% !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .display-4 {
+                font-size: 2rem;
+            }
+            
+            .py-5 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            
+            .px-3 {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
+            .section-title:after {
+                width: 30%;
+            }
+            
+            .border-start {
+                border-left-width: 2px !important;
+            }
+            
+            .border-top {
+                border-top-width: 2px !important;
+            }
+            
+            .p-4 {
+                padding: 1rem !important;
+            }
+            
+            .p-3 {
+                padding: 0.75rem !important;
+            }
+            
+            .h2 {
+                font-size: 1.5rem;
+            }
+            
+            .h4 {
+                font-size: 1.15rem;
+            }
+            
+            .h5 {
+                font-size: 1rem;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem;
+            }
+            
+            .w-25 {
+                width: 60% !important;
+            }
+        }
+        
+        /* Animation keyframes */
+        @keyframes float {
+            0%, 100% { transform: translate(-1rem, 1rem) translateY(0px); }
+            50% { transform: translate(-1rem, 1rem) translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
     <!-- En-tête sobre -->
     <header class="bg-white py-5 px-3 text-center animate__animated animate__fadeIn">
-        <div class="container max-w-4xl mx-auto">
-            <h1 class="display-4 fw-bold text-gray-800 mb-4">
+        <div class="container mx-auto px-3" style="max-width: 1200px;">
+            <h1 class="display-4 fw-bold text-gray-800 mb-3 mb-md-4">
                 <span class="gradient-text">Mon Carnet de Nutrition</span>
             </h1>
-            <p class="text-gray-600 mx-auto text-lg" style="max-width: 32rem;">
+            <p class="text-gray-600 mx-auto text-lg mb-4" style="max-width: 32rem;">
                 Théorie, pratique et passion - Tout sur mon aventure en nutrition
             </p>
-            <div class="mt-5 d-flex justify-content-center">
-                <div class="w-25 h-1 bg-gradient rounded-pill" style="background: linear-gradient(to right, #3b82f6, #10b981);"></div>
+            <div class="mt-4 mt-md-5 d-flex justify-content-center">
+                <div class="w-25 h-1 bg-gradient rounded-pill" style="background: linear-gradient(to right, var(--blue-500), var(--green-500));"></div>
             </div>
         </div>
     </header>
 
     <!-- Section thématique -->
-    <main class="container max-w-6xl px-4 py-5">
-        <section class="mb-5 animate__animated animate__fadeInUp">
-            <h2 class="h2 fw-bold mb-4 text-gray-800 section-title">Au Menu</h2>
+    <main class="container px-3 px-md-4 py-4 py-md-5" style="max-width: 1200px;">
+        <section class="mb-4 mb-md-5 animate__animated animate__fadeInUp">
+            <h2 class="h2 fw-bold mb-3 mb-md-4 text-gray-800 section-title">Au Menu</h2>
             
-            <div class="row g-4 mb-5">
+            <div class="row g-3 g-md-4 mb-4 mb-md-5">
                 <!-- Colonne Étudiante -->
-                <div class="col-md-6">
-                    <div class="bg-blue-50 p-3 rounded border-start border-4 border-blue-200">
-                        <h3 class="h4 fw-bold mb-3 text-blue-800 d-flex align-items-center">
-                            <span class="bg-blue-100 p-2 rounded-circle me-3 icon-container">📚</span>
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <div class="bg-blue-50 p-2 p-md-3 rounded border-start border-4 border-blue-200">
+                        <h3 class="h4 fw-bold mb-2 mb-md-3 text-blue-800 d-flex align-items-center">
+                            <span class="bg-blue-100 p-1 p-md-2 rounded-circle me-2 me-md-3 icon-container">📚</span>
                             <span class="fancy-underline">Mes études en nutrition</span>
                         </h3>
                         
                         <!-- Thème 1 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 border-top border-4 border-blue-100">
-                            <h3 class="h5 fw-bold mb-3 text-blue-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-blue-100 mb-3">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-blue-800 d-flex align-items-center">
                                 <span class="me-2">📖</span>
                                 Cours & Apprentissages
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Résumés de mes cours clés
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Fiches techniques 
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Bibliographie commentée
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Outils pratiques que j'utilise
                                 </li>
@@ -223,21 +389,21 @@ layout: home
                         </div>
                         
                         <!-- Thème 2 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 mt-4 border-top border-4 border-green-100">
-                            <h3 class="h5 fw-bold mb-3 text-green-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-green-100 mb-3">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-green-800 d-flex align-items-center">
                                 <span class="me-2">💭</span>
                                 Réflexions de terrain
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-green-500 me-2">-</span>
                                     Retours d'expérience en stage
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-green-500 me-2">-</span>
                                     Analyse de cas pratiques
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-green-500 me-2">-</span>
                                     Erreurs et leçons apprises
                                 </li>
@@ -245,21 +411,21 @@ layout: home
                         </div>
                         
                         <!-- Thème 5 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 mt-4 border-top border-4 border-teal-100">
-                            <h3 class="h5 fw-bold mb-3 text-teal-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-teal-100">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-teal-800 d-flex align-items-center">
                                 <span class="me-2">🍎</span>
                                 Vie Étudiante
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-teal-500 me-2">-</span>
                                     Conciliation études/alimentation
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-teal-500 me-2">-</span>
                                     Astuces budget serré
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-teal-500 me-2">-</span>
                                     Meal prep adapté aux examens
                                 </li>
@@ -270,32 +436,32 @@ layout: home
                 
                 <!-- Colonne Professionnelle -->
                 <div class="col-md-6">
-                    <div class="bg-purple-50 p-3 rounded border-start border-4 border-purple-200">
-                        <h3 class="h4 fw-bold mb-3 text-purple-800 d-flex align-items-center">
-                            <span class="bg-purple-100 p-2 rounded-circle me-3 icon-container">💼</span>
+                    <div class="bg-purple-50 p-2 p-md-3 rounded border-start border-4 border-purple-200">
+                        <h3 class="h4 fw-bold mb-2 mb-md-3 text-purple-800 d-flex align-items-center">
+                            <span class="bg-purple-100 p-1 p-md-2 rounded-circle me-2 me-md-3 icon-container">💼</span>
                             <span class="fancy-underline">Ma pratique professionnelle</span>
                         </h3>
                         
                         <!-- Thème 3 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 border-top border-4 border-purple-100">
-                            <h3 class="h5 fw-bold mb-3 text-purple-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-purple-100 mb-3">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-purple-800 d-flex align-items-center">
                                 <span class="me-2">🍳</span>
                                 Conseils & Recettes
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-purple-500 me-2">-</span>
                                     Idées repas équilibrés
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-purple-500 me-2">-</span>
                                     Recettes adaptées à des pathologies
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-purple-500 me-2">-</span>
                                     Astuces pour courses et meal prep
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-purple-500 me-2">-</span>
                                     Adaptations selon les budgets
                                 </li>
@@ -303,21 +469,21 @@ layout: home
                         </div>
                         
                         <!-- Thème 4 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 mt-4 border-top border-4 border-orange-100">
-                            <h3 class="h5 fw-bold mb-3 text-orange-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-orange-100 mb-3">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-orange-800 d-flex align-items-center">
                                 <span class="me-2">👩‍⚕️</span>
                                 Accompagnement Pro
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-orange-500 me-2">-</span>
                                     Méthodologies de consultation
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-orange-500 me-2">-</span>
                                     Outils d'éducation nutritionnelle
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-orange-500 me-2">-</span>
                                     Gestion de cabinet
                                 </li>
@@ -325,21 +491,21 @@ layout: home
                         </div>
                         
                         <!-- Thème 6 -->
-                        <div class="bg-white p-4 rounded custom-shadow ms-4 mt-4 border-top border-4 border-blue-100">
-                            <h3 class="h5 fw-bold mb-3 text-blue-800 d-flex align-items-center">
+                        <div class="bg-white p-3 p-md-4 rounded custom-shadow ms-3 ms-md-4 border-top border-4 border-blue-100">
+                            <h3 class="h5 fw-bold mb-2 mb-md-3 text-blue-800 d-flex align-items-center">
                                 <span class="me-2">🌍</span>
                                 Engagement Sociétal
                             </h3>
-                            <ul class="list-unstyled space-y-2 text-gray-700">
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                            <ul class="list-unstyled text-gray-700 mb-0">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Initiatives locales en nutrition
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Projets de sensibilisation
                                 </li>
-                                <li class="d-flex align-items-start ps-3 hover-ps-4" style="transition: all 0.2s;">
+                                <li class="d-flex align-items-start ps-2 ps-md-3 hover-ps-4" style="transition: all 0.2s;">
                                     <span class="text-blue-500 me-2">-</span>
                                     Partenariats avec des ONG
                                 </li>
@@ -351,65 +517,53 @@ layout: home
         </section>
 
         <!-- Section image + texte stylée -->
-<section class="d-flex flex-column flex-md-row align-items-center gap-4 mt-5 p-4 rounded animate__animated animate__fadeIn" 
-         style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); 
-                backdrop-filter: blur(10px); 
-                border: 1px solid rgba(255,255,255,0.2); 
-                box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-    <div class="col-md-6 position-relative">
-        <img src="/assets/img/posts/Nutritionist.jpg" 
-             alt="Alimentation saine"
-             class="rounded w-100 h-auto" 
-             style="max-height: 24rem; object-fit: cover; 
-                    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
-                    transform: scale(1); 
-                    transition: all 0.4s ease; 
-                    filter: brightness(1.1);"
-             onmouseover="this.style.transform='scale(1.05)'"
-             onmouseout="this.style.transform='scale(1)'">
-        <div class="position-absolute bottom-0 end-0 p-2 rounded-circle shadow" 
-             style="background: linear-gradient(45deg, #ff6b6b, #feca57); 
-                    transform: translate(-1rem, 1rem); 
-                    animation: float 3s ease-in-out infinite;">
-            <span class="fs-4">🥗</span>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <h2 class="h2 fw-bold mb-4" 
-            style="background: linear-gradient(135deg, #667eea, #764ba2); 
-                   -webkit-background-clip: text; 
-                   -webkit-text-fill-color: transparent;">
-            Mon parcours en nutrition
-        </h2>
-        <div class="space-y-3 text-gray-700">
-            <p class="fs-5 lh-base" style="font-weight: 500;">
-                Bienvenue dans mon petit carnet où je partage mes découvertes, mes questionnements et mes coups de cœur en nutrition !
-            </p>
-            <p class="lh-base">
-                Vous y trouverez à la fois des ressources académiques rigoureuses et des conseils concrets pour une alimentation saine au quotidien.
-            </p>
-            <p class="lh-base">
-                Un mélange équilibré de théorie et de pratique, toujours au service de votre santé et de mon apprentissage continu.
-            </p>
-        </div>
-        <div class="mt-4 d-flex align-items-center gap-2">
-            <div style="width: 12px; height: 4px; background: #667eea; border-radius: 2px; animation: pulse 2s infinite;"></div>
-            <div style="width: 12px; height: 4px; background: #28a745; border-radius: 2px; animation: pulse 2s infinite 0.3s;"></div>
-            <div style="width: 12px; height: 4px; background: #764ba2; border-radius: 2px; animation: pulse 2s infinite 0.6s;"></div>
-        </div>
-    </div>
-</section>
-
-<style>
-@keyframes float {
-    0%, 100% { transform: translate(-1rem, 1rem) translateY(0px); }
-    50% { transform: translate(-1rem, 1rem) translateY(-10px); }
-}
-@keyframes pulse {
-    0%, 100% { opacity: 0.6; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.2); }
-}
-</style>
+        <section class="d-flex flex-column flex-md-row align-items-center gap-3 gap-md-4 mt-4 mt-md-5 p-3 p-md-4 rounded animate__animated animate__fadeIn" 
+                 style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); 
+                        border: 1px solid rgba(255,255,255,0.2); 
+                        box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+            <div class="col-md-6 position-relative mb-3 mb-md-0">
+                <img src="/assets/img/posts/Nutritionist.jpg" 
+                     alt="Alimentation saine"
+                     class="rounded w-100 h-auto" 
+                     style="max-height: 24rem; object-fit: cover; 
+                            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+                            transform: scale(1); 
+                            transition: all 0.4s ease; 
+                            filter: brightness(1.1);"
+                     onmouseover="this.style.transform='scale(1.05)'"
+                     onmouseout="this.style.transform='scale(1)'">
+                <div class="position-absolute bottom-0 end-0 p-2 rounded-circle shadow d-none d-md-block" 
+                     style="background: linear-gradient(45deg, #ff6b6b, #feca57); 
+                            transform: translate(-1rem, 1rem); 
+                            animation: float 3s ease-in-out infinite;">
+                    <span class="fs-4">🥗</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="h2 fw-bold mb-3 mb-md-4" 
+                    style="background: linear-gradient(135deg, #667eea, #764ba2); 
+                           -webkit-background-clip: text; 
+                           -webkit-text-fill-color: transparent;">
+                    Mon parcours en nutrition
+                </h2>
+                <div class="text-gray-700">
+                    <p class="fs-5 lh-base mb-3" style="font-weight: 500;">
+                        Bienvenue dans mon petit carnet où je partage mes découvertes, mes questionnements et mes coups de cœur en nutrition !
+                    </p>
+                    <p class="lh-base mb-3">
+                        Vous y trouverez à la fois des ressources académiques rigoureuses et des conseils concrets pour une alimentation saine au quotidien.
+                    </p>
+                    <p class="lh-base mb-3 mb-md-4">
+                        Un mélange équilibré de théorie et de pratique, toujours au service de votre santé et de mon apprentissage continu.
+                    </p>
+                </div>
+                <div class="mt-3 mt-md-4 d-flex align-items-center gap-2">
+                    <div style="width: 12px; height: 4px; background: #667eea; border-radius: 2px; animation: pulse 2s infinite;"></div>
+                    <div style="width: 12px; height: 4px; background: #28a745; border-radius: 2px; animation: pulse 2s infinite 0.3s;"></div>
+                    <div style="width: 12px; height: 4px; background: #764ba2; border-radius: 2px; animation: pulse 2s infinite 0.6s;"></div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Bootstrap JS -->
@@ -418,21 +572,23 @@ layout: home
         // Ajout des effets hover dynamiques
         document.querySelectorAll('.hover-ps-4').forEach(item => {
             item.addEventListener('mouseenter', () => {
-                item.style.paddingLeft = '1.5rem';
+                item.style.paddingLeft = '1rem';
             });
             item.addEventListener('mouseleave', () => {
-                item.style.paddingLeft = '0.75rem';
+                item.style.paddingLeft = '0.5rem';
             });
         });
 
         // Effet sur l'image
         const img = document.querySelector('img[alt="Alimentation saine"]');
-        img.addEventListener('mouseenter', () => {
-            img.style.transform = 'scale(1.05)';
-        });
-        img.addEventListener('mouseleave', () => {
-            img.style.transform = 'scale(1)';
-        });
+        if (img) {
+            img.addEventListener('mouseenter', () => {
+                img.style.transform = 'scale(1.05)';
+            });
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1)';
+            });
+        }
     </script>
 </body>
 </html>
