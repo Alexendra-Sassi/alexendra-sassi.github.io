@@ -9,42 +9,43 @@ theme: jekyll-theme-chirpy
 lang: fr-FR
 
 # Change to your timezone › https://kevinnovak.github.io/Time-Zone-Picker
-timezone: Africa/Casablanca
+timezone: Africa/Ouagadougou # change to your timezone
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Honoré M12 # the main title
+title: Alexendra Sassi # the main title
 
-tagline: Un site test pour le moment, le meilleur arrive # it will display as the subtitle
+tagline: Nutritionniste en formation # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  Un site test pour le moment, le meilleur arrive.
-  Il est encore en construction, mais vous pouvez déjà y trouver des articles intéressants à moitié débutés.
-
+  Bienvenue dans mon petit carnet où je partage mes découvertes, mes questionnements et mes coups de cœur en nutrition !
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
-url: "https://honore-m12.github.io"
+url: "https://alexendra-sassi.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: alexendra-sassi # change to your GitHub username
 
 twitter:
-  username: honore_m12 # change to your Twitter username
+  username: alexendra_sassi # change to your Twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Honoré M12
+  name: Alexendra Sassi # change to your name
   email: example@domain.com # change to your email address
+  # Social media usernames
+  facebook: sandra.hien.54 # change to your Facebook username
+  instagram: imale100dra # change to your Instagram username
+  tiktok: westafgirl_226 # votre nom d'utilisateur TikTok
   links:
-    # The first element serves as the copyright owner's link
-    - https://twitter.com/honore_m12 # change to your Twitter homepage
-    - https://github.com/honore-m12 # change to your GitHub homepage
+    # Le premier élément sert de lien pour le propriétaire du copyright
+    # change to your Instagram profile
     # Uncomment below to add more social links
-    - https://www.facebook.com/honore.agbevo
-    - https://www.linkedin.com/in/honoré-king-lao-9186332a3
-
+    - https://web.facebook.com/sandra.hien.54 # votre lien Facebook
+    - https://www.instagram.com/imale100dra/?utm_source=ig_web_button_share_sheet # votre lien Instagram
+    - https://www.tiktok.com/@westafgirl_226?is_from_webapp=1&sender_device=pc # votre lien TikTok
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
@@ -89,7 +90,7 @@ pageviews:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: light # [light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -99,7 +100,8 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://scontent.fcmn1-4.fna.fbcdn.net/v/t39.30808-1/439914191_952858469845091_1723811458233399581_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=1d2534&_nc_eui2=AeHwE8tyo4PuQjaizL3NEl2qFHVIXnASPF8UdUhecBI8X7f4tMBTXmkUNzW1SYMKJYJrwcdXjRBpkjjn0ch259gg&_nc_ohc=zCBhrC48kWoQ7kNvwEU65YQ&_nc_oc=AdnGBoqz6sGPJxMkydNwxcMXifNFMHbwQtxZ9B_Xpagg2OH2T-A9XGEaX4W41Lqrw54&_nc_zt=24&_nc_ht=scontent.fcmn1-4.fna&_nc_gid=DMx1UgUVueBmiQBFukvSAA&oh=00_AfQECULO2uV5nNFthxx96YIVZ1s3SPHE7HD0cMo7qW0PWQ&oe=688C2D4A
+avatar: /assets/img/posts/profile.jpg # string, local or CORS resources
+
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
 social_preview_image: # string, local or CORS resources
@@ -112,7 +114,7 @@ comments:
   provider: disqus
   # The provider options are as follows:
   disqus:
-    shortname: honore-m12-github-io # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
+    shortname: alexendra-sassi-github-io # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
     repo: # <gh-username>/<repo>

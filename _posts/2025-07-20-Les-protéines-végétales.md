@@ -4,7 +4,7 @@ date: 2025-07-20 08:00:00 +0100
 categories: [nutrition]
 tags: [protéines, végétal, alimentation, santé]
 image:
-  path: /meal.avif
+  path: '/assets/img/posts/protéines-veg.jpg'
   
 description: "Découvrez comment optimiser vos apports en protéines végétales pour une alimentation équilibrée et durable."
 ---

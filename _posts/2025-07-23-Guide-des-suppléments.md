@@ -1,6 +1,6 @@
 ---
 title: "Guide des Suppléments : Ce que Dit Vraiment la Science"
-date: 2025-07-23 11:00:00 +0100
+date: 2025-07-18 11:00:00 +0100
 categories: [supplements]
 tags: [compléments, science, efficacité, sécurité]
 image:

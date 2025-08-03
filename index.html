@@ -350,36 +350,66 @@ layout: home
             </div>
         </section>
 
-        <!-- Section image + texte simple -->
-        <section class="d-flex flex-column flex-md-row align-items-center gap-4 mt-5 bg-white p-4 rounded custom-shadow animate__animated animate__fadeIn">
-            <div class="col-md-6 position-relative">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" 
-                     alt="Alimentation saine"
-                     class="rounded w-100 h-auto" style="max-height: 24rem; object-fit: cover; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transform: scale(1); transition: transform 0.5s;">
-                <div class="position-absolute bottom-0 end-0 bg-white p-2 rounded-circle shadow" style="transform: translate(-1rem, 1rem);">
-                    <span class="fs-4">🍏</span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <h2 class="h2 fw-bold mb-4 text-gray-800">Mon parcours en nutrition</h2>
-                <div class="space-y-3 text-gray-700">
-                    <p class="fs-5 lh-base">
-                        Ce carnet retrace mon évolution depuis mes études jusqu'à ma pratique professionnelle. 
-                    </p>
-                    <p class="lh-base">
-                        Vous y trouverez à la fois des ressources académiques rigoureuses et des conseils concrets pour une alimentation saine au quotidien.
-                    </p>
-                    <p class="lh-base">
-                        Un mélange équilibré de théorie et de pratique, toujours au service de votre santé et de mon apprentissage continu.
-                    </p>
-                </div>
-                <div class="mt-4 d-flex align-items-center">
-                    <div class="w-2 h-1 bg-primary me-2"></div>
-                    <div class="w-2 h-1 bg-success me-2"></div>
-                    <div class="w-2 h-1 bg-purple-500"></div>
-                </div>
-            </div>
-        </section>
+        <!-- Section image + texte stylée -->
+<section class="d-flex flex-column flex-md-row align-items-center gap-4 mt-5 p-4 rounded animate__animated animate__fadeIn" 
+         style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); 
+                backdrop-filter: blur(10px); 
+                border: 1px solid rgba(255,255,255,0.2); 
+                box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+    <div class="col-md-6 position-relative">
+        <img src="/assets/img/posts/Nutritionist.jpg" 
+             alt="Alimentation saine"
+             class="rounded w-100 h-auto" 
+             style="max-height: 24rem; object-fit: cover; 
+                    box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+                    transform: scale(1); 
+                    transition: all 0.4s ease; 
+                    filter: brightness(1.1);"
+             onmouseover="this.style.transform='scale(1.05)'"
+             onmouseout="this.style.transform='scale(1)'">
+        <div class="position-absolute bottom-0 end-0 p-2 rounded-circle shadow" 
+             style="background: linear-gradient(45deg, #ff6b6b, #feca57); 
+                    transform: translate(-1rem, 1rem); 
+                    animation: float 3s ease-in-out infinite;">
+            <span class="fs-4">🥗</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h2 class="h2 fw-bold mb-4" 
+            style="background: linear-gradient(135deg, #667eea, #764ba2); 
+                   -webkit-background-clip: text; 
+                   -webkit-text-fill-color: transparent;">
+            Mon parcours en nutrition
+        </h2>
+        <div class="space-y-3 text-gray-700">
+            <p class="fs-5 lh-base" style="font-weight: 500;">
+                Bienvenue dans mon petit carnet où je partage mes découvertes, mes questionnements et mes coups de cœur en nutrition !
+            </p>
+            <p class="lh-base">
+                Vous y trouverez à la fois des ressources académiques rigoureuses et des conseils concrets pour une alimentation saine au quotidien.
+            </p>
+            <p class="lh-base">
+                Un mélange équilibré de théorie et de pratique, toujours au service de votre santé et de mon apprentissage continu.
+            </p>
+        </div>
+        <div class="mt-4 d-flex align-items-center gap-2">
+            <div style="width: 12px; height: 4px; background: #667eea; border-radius: 2px; animation: pulse 2s infinite;"></div>
+            <div style="width: 12px; height: 4px; background: #28a745; border-radius: 2px; animation: pulse 2s infinite 0.3s;"></div>
+            <div style="width: 12px; height: 4px; background: #764ba2; border-radius: 2px; animation: pulse 2s infinite 0.6s;"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes float {
+    0%, 100% { transform: translate(-1rem, 1rem) translateY(0px); }
+    50% { transform: translate(-1rem, 1rem) translateY(-10px); }
+}
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+</style>
     </main>
 
     <!-- Bootstrap JS -->

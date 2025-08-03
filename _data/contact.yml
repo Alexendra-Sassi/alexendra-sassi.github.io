@@ -13,6 +13,12 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+- type: facebook
+  icon: "fab fa-facebook"
+- type: instagram
+  icon: "fab fa-instagram"
+- type: tiktok
+  icon: "fab fa-tiktok"
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon

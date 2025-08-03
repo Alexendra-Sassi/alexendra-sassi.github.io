@@ -1,7 +1,7 @@
 ---
 title: "Recettes Détox : Retrouver l'Équilibre Après les Excès"
 date: 2025-07-21 16:45:00 +0100
-categories: [recipes]
+categories: [recettes]
 tags: [détox, recettes, légumes, digestion]
 image:
   path: /assets/img/posts/recettes-detox.jpg

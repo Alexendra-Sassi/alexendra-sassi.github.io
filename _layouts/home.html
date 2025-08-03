@@ -74,20 +74,7 @@ refactor: true
     --font-serif: 'Libre Baskerville', serif;
   }
 
-  /* Mode sombre */
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --card-bg: #2d3748;
-      --card-border: rgba(255, 255, 255, 0.1);
-      --card-border-hover: rgba(255, 255, 255, 0.2);
-      --text-color: #f7fafc;
-      --text-muted: #cbd5e0;
-      --border-color: rgba(255, 255, 255, 0.1);
-      --link-color: #4aaaaa;
-      --image-placeholder-bg: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-      --image-placeholder-color: #718096;
-    }
-  }
+ 
 
   [data-bs-theme="dark"] {
     --card-bg: #1e2328;
@@ -186,14 +173,12 @@ refactor: true
     background: #9C27B0 !important;
   }
   
-  [class^="category-recipe"],
-  [class*=" category-recipe"] { 
+  [class^="category-recettes"],
+  [class*=" category-recette"] { 
     background: #FF9800 !important;
   }
   
-  [class^="category-health"],
-  [class^="category-sante"],
-  [class*=" category-health"],
+  
   [class*=" category-sante"] { 
     background: #E91E63 !important;
   }
@@ -212,8 +197,8 @@ refactor: true
     background: #00BCD4 !important;
   }
   
-  [class^="category-lifestyle"],
-  [class*=" category-lifestyle"] { 
+  [class^="category-etudes"],
+  [class*=" category-stages"] { 
     background: #607D8B !important;
   }
   
@@ -573,6 +558,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- Ancre pour le scroll -->
 <div id="post-list-anchor"></div>
+
+<div style="margin-bottom: 2.5rem; text-align: center; position: relative;">
+  <h2 style="
+    font-family: var(--font-serif);
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+  ">
+    <span style="color: var(--link-color);">→</span> Explorer les articles
+  </h2>
+  
+  <p style="
+    font-family: var(--font-sans);
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  ">
+    Un mélange de science et de pratique pour votre santé. 
+    <span style="display: inline-block; border-bottom: 1px dashed var(--link-color);">Choisissez votre lecture</span>
+  </p>
+  
+  <div style="
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 1.5rem auto;
+    width: 80%;
+  "></div>
+</div>
 
 <!-- Liste des articles -->
 <div id="post-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 px-3">
